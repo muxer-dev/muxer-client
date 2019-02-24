@@ -1,0 +1,57 @@
+language: node_js
+node_js: 'node'
+
+before_install:
+  - stty cols 80
+
+dist: trusty
+sudo: required
+
+install:
+- npm install
+
+cache:
+  directories:
+  - "node_modules"
+
+addons:
+  apt:
+    sources:
+     - google-chrome
+    packages:
+     - google-chrome-stable
+
+services:
+  - docker
+
+env:
+  global:
+    - DOCKER_COMPOSE_VERSION=1.14.0
+    - COMMIT=${TRAVIS_COMMIT::8}
+    - MAIN_REPO=ssh://git@github.com/muxer-dev/muxer-client.git
+
+    - CLIENT=my-dev-space-client
+    - CLIENT_REPO=${MAIN_REPO}#${TRAVIS_BRANCH}:services/client
+    - CLIENT_DIR=services/client
+
+before_install:
+  - sudo rm /usr/local/bin/docker-compose
+  - curl -L https://github.com/docker/compose/releases/download/${DOCKER_COMPOSE_VERSION}/docker-compose-`uname -s`-`uname -m` > docker-compose
+  - chmod +x docker-compose
+  - sudo mv docker-compose /usr/local/bin
+
+before_script:
+  - export TEST_URL=http://127.0.0.1
+  - export REACT_APP_EVENTS_SERVICE_URL=http://127.0.0.1
+  - export SECRET_KEY=my_precious
+  - export DISPLAY=:99.0
+  - export DOCKER_ENV=$(if [ "$TRAVIS_BRANCH" == "production" ]; then echo "prod"; else echo "stage"; fi)
+  - sh -e /etc/init.d/xvfb start
+
+script:
+  - bash ./scripts/test.sh $DOCKER_ENV
+
+after_success:
+  - bash ./scripts/docker-push.sh
+  - bash ./scripts/docker-deploy-stage.sh
+  - bash ./scripts/docker-deploy-prod.sh

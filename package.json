@@ -1,0 +1,58 @@
+{
+  "name": "my-dev-space",
+  "version": "0.1.0",
+  "private": true,
+  "description": "A developer community for everyone with an interest in Technology & Meetups",
+  "homepage": "http://muxer.co.uk/",
+  "repository": "https://github.com/apoclyps/my-dev-space",
+  "bugs": "https://github.com/apoclyps/my-dev-space/issues",
+  "license": "MIT",
+  "scripts": {
+    "start": "react-app-rewired start",
+    "build": "react-app-rewired build",
+    "test": "react-app-rewired test --env=jsdom",
+    "eject": "react-app-rewired eject",
+    "lint": "eslint ./src"
+  },
+  "dependencies": {
+    "axios": "^0.18.0",
+    "font-awesome": "^4.7.0",
+    "lodash": "^4.17.11",
+    "moment": "^2.24.0",
+    "parse-domain": "^2.1.7",
+    "prop-types": "^15.6.2",
+    "react": "^16.7.0",
+    "react-dom": "^16.7.0",
+    "react-big-calendar": "^0.20.3",
+    "react-fontawesome": "^1.6.1",
+    "react-ga": "^2.5.6",
+    "react-redux": "^4.4.5",
+    "react-router-dom": "^4.2.2",
+    "react-scripts": "^1.1.5",
+    "react-waypoint": "^8.1.0",
+    "redux": "^4.0.1",
+    "redux-thunk": "^2.1.0",
+    "styled-jsx": "^3.2.0"
+  },
+  "devDependencies": {
+    "babel-eslint": "^10.0.1",
+    "eslint": "^4.19.1",
+    "eslint-config-airbnb": "^17.1.0",
+    "eslint-config-prettier": "^3.6.0",
+    "eslint-plugin-import": "^2.14.0",
+    "eslint-plugin-jsx-a11y": "^6.1.2",
+    "eslint-plugin-prettier": "^3.0.1",
+    "eslint-plugin-react": "^7.12.3",
+    "fetch-mock": "6.5.2",
+    "prettier": "1.16.0",
+    "react-app-rewired": "^1.6.2",
+    "react-test-renderer": "^16.7.0",
+    "redux-mock-store": "^1.5.3"
+  },
+  "browserslist": [
+    ">0.2%",
+    "not dead",
+    "not ie <= 11",
+    "not op_mini all"
+  ]
+}

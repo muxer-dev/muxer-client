@@ -1,0 +1,24 @@
+version: '3.6'
+
+services:
+
+  client:
+    container_name: client
+    build:
+      context: .
+      dockerfile: Dockerfile-prod
+      args:
+        - NODE_ENV=production
+        - REACT_APP_GOOGLE_ANALYTICS_ID=UA-123052755-3
+        - REACT_APP_EVENTS_SERVICE_URL=${REACT_APP_EVENTS_SERVICE_URL}
+    ports:
+      - '3007:3000'
+
+  client-test:
+    container_name: client-test
+    build:
+      context: .
+      dockerfile: Dockerfile-stage
+    environment:
+      - NODE_ENV=production
+      - CI=${CI:-false}

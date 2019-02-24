@@ -1,0 +1,8 @@
+exclude_patterns:
+- ".github/"
+- "scripts/"
+- "docs/"
+- "**/node_modules/"
+- "**/test/"
+- "**/tests/"
+- "**/test*.js"
