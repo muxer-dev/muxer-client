@@ -12,9 +12,9 @@ const Footer = () => (
         {" API"}
       </a>
       | Built by
-      <a href="https://github.com/apoclyps/my-dev-space/graphs/contributors">
+      <a href="https://github.com/muxer-dev">
         <FontAwesome name="github" />
-        {" open source contributions"}
+        {" open source contributions."}
       </a>
     </div>
   </div>
